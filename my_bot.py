@@ -22,8 +22,8 @@ except ValueError: ADMIN_CHAT_ID = 0
 
 SUPPORT_PHONE = "+998 (90) 931-31-07"
 
-# ⚠️ СЮДА ВСТАВЬ СВОЮ НОВУЮ ССЫЛКУ С GITHUB PAGES!
-WEBAPP_URL = "https://samekxada.github.io/flower-bot/?v=1" 
+# ⚠️ СЮДА ВСТАВЬ СВОЮ ССЫЛКУ С GITHUB PAGES!
+WEBAPP_URL = "https://твой_ник.github.io/flower-bot/?v=1" 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
@@ -36,42 +36,42 @@ dp = Dispatcher()
 
 TEXTS = {
     "ru": {
-        "welcome": "🌸 <b>Добро пожаловать в Fleur!</b>\n\nЦветы, которые скажут больше слов. Нажмите на кнопку <b>«🛍 Сделать заказ»</b> ниже, чтобы открыть каталог.",
+        "welcome": "🌸 <b>Добро пожаловать в Fleur!</b> ✨\n\nЦветы, которые скажут больше слов. Нажмите на кнопку <b>«🛍 Сделать заказ»</b> ниже, чтобы открыть наш красивый каталог!",
         "addr_btn": "📍 Узнать Адрес",
         "lang_btn": "🌐 Язык / Til",
         "address": "📍 Демо-адрес: Ташкент, Мирабадский район.",
         
-        "ask_anonymous": "🕵️‍♂️ Это <b>анонимная доставка</b>? (Получатель не узнает, от кого цветы)",
+        "ask_anonymous": "🕵️‍♂️ Скажите, это будет <b>анонимная доставка</b>? (Получатель не узнает, от кого цветы) 💐",
         "anon_yes": "🤫 Да, анонимно",
         "anon_no": "🙋‍♂️ Нет, от меня",
         
-        "phone_req": "📱 Отправьте ваш номер телефона для связи (курьер может уточнить детали):",
+        "phone_req": "📱 Пожалуйста, отправьте ваш номер телефона для связи (курьер может уточнить детали доставки): 😊",
         "phone_btn": "📞 Отправить номер",
-        "phone_wrong": "❌ Пожалуйста, отправьте СВОЙ номер.",
+        "phone_wrong": "❌ Ой, пожалуйста, отправьте СВОЙ номер телефона, нажав на кнопку ниже. 🙂",
         
-        "ask_address": "📍 Напишите адрес доставки и желаемое время (например: <i>'ул. Амира Темура 10, к 18:00'</i>):",
+        "ask_address": "📍 Напишите адрес доставки и желаемое время (например: <i>'ул. Амира Темура 10, к 18:00'</i>): ✍️",
         
-        "thanks": "✅ Спасибо! Ваш заказ принят.\n\n📞 Номер для связи: {}\n📞 Служба поддержки: {}",
-        "thanks_warn": "✅ Заказ принят.\n\n📞 Номер: {}\n⚠️ Если не свяжутся за 10 минут — позвоните: {}"
+        "thanks": "✅ <b>Спасибо большое!</b> Ваш заказ принят! 🌸\n\n📞 Номер для связи: {}\n📞 Служба поддержки: {}\n\nМы свяжемся с вами в ближайшее время! 💖",
+        "thanks_warn": "✅ <b>Заказ принят!</b> 🌸\n\n📞 Номер: {}\n⚠️ Если не свяжутся за 10 минут — позвоните: {}\n\nСпасибо, что выбрали нас! 💖"
     },
     "uz": {
-        "welcome": "🌸 <b>Fleur do'koniga xush kelibsiz!</b>\n\nKatalog ochish uchun pastdagi <b>«🛍 Buyurtma berish»</b> tugmasini bosing.",
+        "welcome": "🌸 <b>Fleur do'koniga xush kelibsiz!</b> ✨\n\nKatalog ochish uchun pastdagi <b>«🛍 Buyurtma berish»</b> tugmasini bosing!",
         "addr_btn": "📍 Manzilni bilish",
         "lang_btn": "🌐 Язык / Til",
         "address": "📍 Demo-manzil: Toshkent, Mirobod tumani.",
         
-        "ask_anonymous": "🕵️‍♂️ Bu <b>anonim yetkazib berishmi</b>? (Qabul qiluvchi kimdan ekanligini bilmaydi)",
+        "ask_anonymous": "🕵️‍♂️ Bu <b>anonim yetkazib berishmi</b>? (Qabul qiluvchi kimdan ekanligini bilmaydi) 💐",
         "anon_yes": "🤫 Ha, anonim",
         "anon_no": "🙋‍♂️ Yo'q, mendan",
         
-        "phone_req": "📱 Kuryer bog'lanishi uchun telefon raqamingizni yuboring:",
+        "phone_req": "📱 Iltimos, kuryer bog'lanishi uchun telefon raqamingizni yuboring: 😊",
         "phone_btn": "📞 Raqamni yuborish",
-        "phone_wrong": "❌ Iltimos, O'Z raqamingizni yuboring.",
+        "phone_wrong": "❌ Iltimos, O'Z raqamingizni yuboring. 🙂",
         
-        "ask_address": "📍 Yetkazib berish manzilini va vaqtini yozing (masalan: <i>'Amir Temur ko'chasi 10, 18:00 gacha'</i>):",
+        "ask_address": "📍 Yetkazib berish manzilini va vaqtini yozing (masalan: <i>'Amir Temur ko'chasi 10, 18:00 gacha'</i>): ✍️",
         
-        "thanks": "✅ Rahmat! Buyurtmangiz qabul qilindi.\n\n📞 Aloqa: {}\n📞 Yordam: {}",
-        "thanks_warn": "✅ Buyurtma qabul qilindi.\n\n📞 Aloqa: {}\n⚠️ 10 daqiqada bog'lanmasa — qo'ng'iroq qiling: {}"
+        "thanks": "✅ <b>Katta rahmat!</b> Buyurtmangiz qabul qilindi! 🌸\n\n📞 Aloqa: {}\n📞 Yordam: {}\n\nTez orada siz bilan bog'lanamiz! 💖",
+        "thanks_warn": "✅ <b>Buyurtma qabul qilindi!</b> 🌸\n\n📞 Aloqa: {}\n⚠️ 10 daqiqada bog'lanmasa — qo'ng'iroq qiling: {}\n\nBizni tanlaganingiz uchun rahmat! 💖"
     }
 }
 
@@ -148,8 +148,15 @@ async def finalize_order(user_id, lang, address=None):
 async def complete_order(callback: types.CallbackQuery):
     client_id = int(callback.data.split("_")[1])
     try:
-        await bot.send_message(client_id, "🛵 <b>Отличные новости!</b>\n\nВаш заказ передан курьеру. Ожидайте доставку в ближайшее время.", parse_mode="HTML")
-        await callback.message.edit_text(text=callback.message.text + "\n\n✅ <b>СТАТУС: ДОСТАВЛЯЕТСЯ</b>", parse_mode="HTML")
+        await bot.send_message(
+            client_id, 
+            "🛵 <b>Отличные новости!</b> ✨\n\nВаш заказ передан курьеру. Ожидайте доставку в ближайшее время. Спасибо, что выбрали нас! 💐", 
+            parse_mode="HTML"
+        )
+        await callback.message.edit_text(
+            text=callback.message.text + "\n\n✅ <b>СТАТУС: ДОСТАВЛЯЕТСЯ</b>", 
+            parse_mode="HTML"
+        )
         await callback.answer("Клиент уведомлен! 🛵", show_alert=False)
     except Exception as e:
         await callback.answer(f"Ошибка: {e}", show_alert=True)
@@ -183,7 +190,6 @@ async def change_lang(message: types.Message):
 async def handle_web_app_data(message: types.Message):
     user_id = message.from_user.id
     lang = get_lang(user_id)
-    logger.info(f"Получены данные из Web App: {message.web_app_data.data}")
     
     try:
         data = json.loads(message.web_app_data.data)
@@ -261,7 +267,10 @@ async def show_address(message: types.Message):
 
 @dp.message()
 async def fallback(message: types.Message):
-    await message.answer("Нажмите на кнопку «🛍 Сделать заказ» внизу, чтобы открыть каталог цветов.", reply_markup=get_main_keyboard(get_lang(message.from_user.id)))
+    await message.answer(
+        "🌸 Пожалуйста, нажмите на кнопку «🛍 Сделать заказ» внизу, чтобы открыть каталог цветов. 😊", 
+        reply_markup=get_main_keyboard(get_lang(message.from_user.id))
+    )
 
 @dp.error()
 async def error_handler(event: types.ErrorEvent):
