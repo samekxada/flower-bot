@@ -23,7 +23,7 @@ except ValueError: ADMIN_CHAT_ID = 0
 SUPPORT_PHONE = "+998 (90) 931-31-07"
 
 # ⚠️ СЮДА ВСТАВЬ СВОЮ ССЫЛКУ С GITHUB PAGES!
-WEBAPP_URL = "https://твой_ник.github.io/flower-bot/?v=2" 
+WEBAPP_URL = "https://твой_ник.github.io/flower-bot/?v=3" 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
