@@ -12,7 +12,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
-            --bg: #F8F3ED; /* Теплый бумажный фон */
+            --bg: #F8F3ED;
             --card: #FFFFFF;
             --text-main: #2C1E16; 
             --text-muted: #8A7363;
@@ -29,7 +29,6 @@
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background-color: var(--bg);
-            /* Текстура "мятой бумаги" через градиенты + шум */
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(0,0,0,0.015) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0,0,0,0.02) 0%, transparent 40%),
@@ -40,7 +39,6 @@
             padding-bottom: 110px;
         }
 
-        /* --- ШАПКА --- */
         .header {
             text-align: center;
             padding: 30px 0 20px;
@@ -71,7 +69,6 @@
             letter-spacing: 1.5px;
         }
 
-        /* --- НАВИГАЦИЯ --- */
         .nav {
             display: flex;
             overflow-x: auto;
@@ -100,7 +97,6 @@
             box-shadow: 0 4px 12px rgba(155, 28, 49, 0.25);
         }
 
-        /* --- СЕТКА ТОВАРОВ --- */
         .menu {
             display: flex;
             flex-direction: column;
@@ -112,7 +108,6 @@
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border);
-            /* Увеличенные тени для эффекта парения */
             box-shadow: 
                 0 12px 28px rgba(44, 30, 22, 0.08), 
                 0 4px 10px rgba(44, 30, 22, 0.04);
@@ -178,7 +173,7 @@
             transition: all 0.2s;
             box-shadow: 0 2px 8px rgba(155, 28, 49, 0.15);
             position: relative;
-            overflow: hidden; /* Для эффекта волны */
+            overflow: hidden; 
         }
 
         .add-btn:active {
@@ -187,7 +182,6 @@
             transform: scale(0.95);
         }
 
-        /* --- НИЖНЯЯ ПАНЕЛЬ --- */
         .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -243,12 +237,10 @@
             box-shadow: none;
         }
 
-        /* --- АНИМАЦИИ --- */
         @keyframes slideUp {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Эффект сердечка */
         .heart-burst {
             position: fixed;
             font-size: 20px;
@@ -263,7 +255,6 @@
             100% { opacity: 0; transform: translate(-50%, -150%) scale(0.8); }
         }
 
-        /* Эффект волновой ряби на кнопке */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -301,22 +292,16 @@
         tg.expand();
         tg.enableClosingConfirmation();
 
-        // --- РАСШИРЕННЫЙ СПИСОК ТОВАРОВ ---
         const products = [
-            // Букеты
             { id: 1, cat: "bouquets", name: "101 Роза", price: 1200000, desc: "Бесконечная любовь в каждом лепестке", img: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=400" },
             { id: 2, cat: "bouquets", name: "Пионы «Розовый закат»", price: 320000, desc: "Нежность и весеннее настроение", img: "https://images.unsplash.com/photo-1591887000678-7d8286091e6b?q=80&w=400" },
             { id: 3, cat: "bouquets", name: "Белые розы с эвкалиптом", price: 450000, desc: "Элегантность и свежесть", img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?q=80&w=400" },
             { id: 4, cat: "bouquets", name: "Летний микс", price: 280000, desc: "Яркие эмоции и полевые цветы", img: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=400" },
             { id: 5, cat: "bouquets", name: "Подсолнухи", price: 350000, desc: "Солнечное настроение в доме", img: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?q=80&w=400" },
-            
-            // Подарки
             { id: 6, cat: "gifts", name: "Мишка + 15 Роз", price: 550000, desc: "Идеальный сюрприз для любимой", img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=400" },
             { id: 7, cat: "gifts", name: "Коробка конфет", price: 180000, desc: "Сладкий комплимент к букету", img: "https://images.unsplash.com/photo-1548907040-4baa42d10919?q=80&w=400" },
             { id: 8, cat: "gifts", name: "Открытка + Роза", price: 65000, desc: "Маленький, но важный жест", img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=400" },
             { id: 9, cat: "gifts", name: "Воздушные шары", price: 150000, desc: "Сердца с гелием", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=400" },
-            
-            // Поштучно
             { id: 10, cat: "single", name: "Эквадорская роза", price: 45000, desc: "Один, но идеальный цветок", img: "https://images.unsplash.com/photo-1496062031456-07b8f162a322?q=80&w=400" },
             { id: 11, cat: "single", name: "Тюльпан", price: 15000, desc: "Классика весеннего настроения", img: "https://images.unsplash.com/photo-1586969336621-4f4132b7ccbf?q=80&w=400" },
             { id: 12, cat: "single", name: "Ромашка", price: 10000, desc: "Просто и со вкусом", img: "https://images.unsplash.com/photo-1595514214496-55c6f45540b1?q=80&w=400" },
@@ -330,8 +315,8 @@
         ];
 
         let cart = {}, currentCategory = "bouquets", isSending = false;
+        let currentTotalValue = 0; // Для анимации кассы
 
-        // --- РЕНДЕР НАВИГАЦИИ ---
         const nav = document.getElementById('nav-container');
         categories.forEach(cat => {
             const btn = document.createElement('button'); 
@@ -347,7 +332,6 @@
             nav.appendChild(btn);
         });
 
-        // --- РЕНДЕР ТОВАРОВ ---
         const container = document.getElementById('menu-container');
         function render() {
             container.innerHTML = '';
@@ -374,7 +358,6 @@
         }
         render();
 
-        // --- ЛОГИКА КОРЗИНЫ С АНИМАЦИЯМИ ---
         function add(event, id, name, price) {
             if(isSending) return; 
             
@@ -383,9 +366,7 @@
             
             tg.HapticFeedback.impactOccurred('light'); 
             
-            // Запускаем эффект волны на кнопке
             createRipple(event);
-            // Запускаем вылетающее сердечко
             createHeart(event);
             
             updateTotal();
@@ -412,27 +393,47 @@
             const rect = btn.getBoundingClientRect();
             const heart = document.createElement('div');
             heart.className = 'heart-burst';
-            heart.innerText = '❤️'; // Простое сердечко
-            // Центрируем относительно кнопки
+            heart.innerText = '❤️'; 
             heart.style.left = `${rect.left + rect.width / 2}px`;
             heart.style.top = `${rect.top}px`;
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 800);
         }
 
+        // --- ВОЗВРАЩАЕМ ЭФФЕКТ КАССЫ ---
         function updateTotal() {
-            let target = 0, count = 0; 
+            let targetTotal = 0, count = 0; 
             for(let id in cart) { 
-                target += cart[id].price * cart[id].qty; 
+                targetTotal += cart[id].price * cart[id].qty; 
                 count += cart[id].qty; 
             }
-            document.getElementById('total').innerText = target.toLocaleString();
             
+            // Запускаем анимацию цифр
+            animateValue("total", currentTotalValue, targetTotal, 400);
+            currentTotalValue = targetTotal;
+
             const btn = document.getElementById('checkout-btn');
             btn.innerText = count > 0 ? `Оформить (${count})` : 'Оформить';
         }
 
-        // --- ОТПРАВКА ЗАКАЗА ---
+        // Функция плавного изменения чисел
+        function animateValue(id, start, end, duration) {
+            if (start === end) return;
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const easeProgress = 1 - Math.pow(1 - progress, 4); 
+                const current = Math.floor(easeProgress * (end - start) + start);
+                obj.innerText = current.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
         function sendOrder() {
             if(isSending || Object.keys(cart).length === 0) { 
                 tg.showAlert("Ваша корзина пуста 🌸"); 
