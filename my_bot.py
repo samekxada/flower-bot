@@ -23,7 +23,7 @@ except ValueError: ADMIN_CHAT_ID = 0
 SUPPORT_PHONE = "+998 (90) 931-31-07"
 
 # ⚠️ СЮДА ВСТАВЬ СВОЮ ССЫЛКУ С GITHUB PAGES!
-WEBAPP_URL = "https://samekxada.github.io/flower-bot/?v=2" 
+WEBAPP_URL = "https://твой_ник.github.io/flower-bot/?v=2" 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
@@ -138,7 +138,13 @@ async def finalize_order(user_id, lang, address=None):
         except Exception as e: logger.error(f"Ошибка админу: {e}")
             
     thanks_key = "thanks" if notified else "thanks_warn"
-    await bot.send_message(user_id, TEXTS[lang][thanks_key].format(phone, SUPPORT_PHONE), reply_markup=get_main_keyboard(lang))
+    # ВОТ ЗДЕСЬ БЫЛ БАГ, ТЕПЕРЬ HTML ЧИТАЕТСЯ ПРАВИЛЬНО
+    await bot.send_message(
+        user_id, 
+        TEXTS[lang][thanks_key].format(phone, SUPPORT_PHONE), 
+        reply_markup=get_main_keyboard(lang),
+        parse_mode="HTML" 
+    )
 
 # =========================
 # ЗАВЕРШЕНИЕ ЗАКАЗА
