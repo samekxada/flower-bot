@@ -214,6 +214,14 @@
             font-size: 24px;
             font-weight: 700;
             color: var(--text-main);
+            transition: transform 0.1s ease;
+            display: inline-block;
+        }
+
+        /* Пульсация кассы */
+        .total-val.pop {
+            transform: scale(1.1);
+            color: var(--accent);
         }
 
         .checkout-btn {
@@ -292,20 +300,14 @@
         tg.expand();
         tg.enableClosingConfirmation();
 
-        // ТВОИ ФОТОГРАФИИ (Убедись, что названия файлов на GitHub точно совпадают)
         const products = [
-            // Букеты
             { id: 1, cat: "bouquets", name: "101 Роза", price: 1200000, desc: "Бесконечная любовь в каждом лепестке", img: "red_roses.jpg" },
             { id: 2, cat: "bouquets", name: "Пионы «Розовый закат»", price: 320000, desc: "Нежность и весеннее настроение", img: "peonies.jpg" },
             { id: 3, cat: "bouquets", name: "Белые розы с эвкалиптом", price: 450000, desc: "Элегантность и свежесть", img: "white_roses.jpg" },
             { id: 4, cat: "bouquets", name: "Летний микс", price: 280000, desc: "Яркие эмоции и полевые цветы", img: "summer_mix.jpg" },
-            
-            // Подарки
             { id: 5, cat: "gifts", name: "Мишка + Белые Розы", price: 550000, desc: "Идеальный сюрприз для любимой", img: "bear.jpg" },
             { id: 6, cat: "gifts", name: "Открытка + Роза", price: 65000, desc: "Маленький, но важный жест", img: "postcard.jpg" },
             { id: 7, cat: "gifts", name: "Воздушные шары", price: 150000, desc: "Яркие шары с гелием", img: "balloons.jpg" },
-            
-            // Поштучно
             { id: 8, cat: "single", name: "Гербера", price: 25000, desc: "Яркий акцент в любом букете", img: "gerbera.jpg" },
             { id: 9, cat: "single", name: "Тюльпаны", price: 15000, desc: "Классика весеннего настроения", img: "tulips.jpg" },
             { id: 10, cat: "single", name: "Ромашки", price: 10000, desc: "Просто и со вкусом", img: "chamomile.jpg" }
@@ -410,8 +412,14 @@
                 count += cart[id].qty; 
             }
             
+            // Эффект кассы
             animateValue("total", currentTotalValue, targetTotal, 400);
             currentTotalValue = targetTotal;
+
+            // Пульсация
+            const totalEl = document.getElementById('total');
+            totalEl.classList.add('pop');
+            setTimeout(() => totalEl.classList.remove('pop'), 200);
 
             const btn = document.getElementById('checkout-btn');
             btn.innerText = count > 0 ? `Оформить (${count})` : 'Оформить';
