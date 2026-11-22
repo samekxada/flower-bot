@@ -292,20 +292,23 @@
         tg.expand();
         tg.enableClosingConfirmation();
 
+        // ТВОИ ФОТОГРАФИИ (Убедись, что названия файлов на GitHub точно совпадают)
         const products = [
-            { id: 1, cat: "bouquets", name: "101 Роза", price: 1200000, desc: "Бесконечная любовь в каждом лепестке", img: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?q=80&w=400" },
-            { id: 2, cat: "bouquets", name: "Пионы «Розовый закат»", price: 320000, desc: "Нежность и весеннее настроение", img: "https://images.unsplash.com/photo-1591887000678-7d8286091e6b?q=80&w=400" },
-            { id: 3, cat: "bouquets", name: "Белые розы с эвкалиптом", price: 450000, desc: "Элегантность и свежесть", img: "https://images.unsplash.com/photo-1533616688419-b7a585564566?q=80&w=400" },
-            { id: 4, cat: "bouquets", name: "Летний микс", price: 280000, desc: "Яркие эмоции и полевые цветы", img: "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=400" },
-            { id: 5, cat: "bouquets", name: "Подсолнухи", price: 350000, desc: "Солнечное настроение в доме", img: "https://images.unsplash.com/photo-1597848212624-a19eb35e2651?q=80&w=400" },
-            { id: 6, cat: "gifts", name: "Мишка + 15 Роз", price: 550000, desc: "Идеальный сюрприз для любимой", img: "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=400" },
-            { id: 7, cat: "gifts", name: "Коробка конфет", price: 180000, desc: "Сладкий комплимент к букету", img: "https://images.unsplash.com/photo-1548907040-4baa42d10919?q=80&w=400" },
-            { id: 8, cat: "gifts", name: "Открытка + Роза", price: 65000, desc: "Маленький, но важный жест", img: "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=400" },
-            { id: 9, cat: "gifts", name: "Воздушные шары", price: 150000, desc: "Сердца с гелием", img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=400" },
-            { id: 10, cat: "single", name: "Эквадорская роза", price: 45000, desc: "Один, но идеальный цветок", img: "https://images.unsplash.com/photo-1496062031456-07b8f162a322?q=80&w=400" },
-            { id: 11, cat: "single", name: "Тюльпан", price: 15000, desc: "Классика весеннего настроения", img: "https://images.unsplash.com/photo-1586969336621-4f4132b7ccbf?q=80&w=400" },
-            { id: 12, cat: "single", name: "Ромашка", price: 10000, desc: "Просто и со вкусом", img: "https://images.unsplash.com/photo-1595514214496-55c6f45540b1?q=80&w=400" },
-            { id: 13, cat: "single", name: "Гербера", price: 25000, desc: "Яркий акцент в любом букете", img: "https://images.unsplash.com/photo-1596622050068-299e5b54a54c?q=80&w=400" }
+            // Букеты
+            { id: 1, cat: "bouquets", name: "101 Роза", price: 1200000, desc: "Бесконечная любовь в каждом лепестке", img: "red_roses.jpg" },
+            { id: 2, cat: "bouquets", name: "Пионы «Розовый закат»", price: 320000, desc: "Нежность и весеннее настроение", img: "peonies.jpg" },
+            { id: 3, cat: "bouquets", name: "Белые розы с эвкалиптом", price: 450000, desc: "Элегантность и свежесть", img: "white_roses.jpg" },
+            { id: 4, cat: "bouquets", name: "Летний микс", price: 280000, desc: "Яркие эмоции и полевые цветы", img: "summer_mix.jpg" },
+            
+            // Подарки
+            { id: 5, cat: "gifts", name: "Мишка + Белые Розы", price: 550000, desc: "Идеальный сюрприз для любимой", img: "bear.jpg" },
+            { id: 6, cat: "gifts", name: "Открытка + Роза", price: 65000, desc: "Маленький, но важный жест", img: "postcard.jpg" },
+            { id: 7, cat: "gifts", name: "Воздушные шары", price: 150000, desc: "Яркие шары с гелием", img: "balloons.jpg" },
+            
+            // Поштучно
+            { id: 8, cat: "single", name: "Гербера", price: 25000, desc: "Яркий акцент в любом букете", img: "gerbera.jpg" },
+            { id: 9, cat: "single", name: "Тюльпаны", price: 15000, desc: "Классика весеннего настроения", img: "tulips.jpg" },
+            { id: 10, cat: "single", name: "Ромашки", price: 10000, desc: "Просто и со вкусом", img: "chamomile.jpg" }
         ];
 
         const categories = [
@@ -315,7 +318,7 @@
         ];
 
         let cart = {}, currentCategory = "bouquets", isSending = false;
-        let currentTotalValue = 0; // Для анимации кассы
+        let currentTotalValue = 0;
 
         const nav = document.getElementById('nav-container');
         categories.forEach(cat => {
@@ -400,7 +403,6 @@
             setTimeout(() => heart.remove(), 800);
         }
 
-        // --- ВОЗВРАЩАЕМ ЭФФЕКТ КАССЫ ---
         function updateTotal() {
             let targetTotal = 0, count = 0; 
             for(let id in cart) { 
@@ -408,7 +410,6 @@
                 count += cart[id].qty; 
             }
             
-            // Запускаем анимацию цифр
             animateValue("total", currentTotalValue, targetTotal, 400);
             currentTotalValue = targetTotal;
 
@@ -416,7 +417,6 @@
             btn.innerText = count > 0 ? `Оформить (${count})` : 'Оформить';
         }
 
-        // Функция плавного изменения чисел
         function animateValue(id, start, end, duration) {
             if (start === end) return;
             const obj = document.getElementById(id);
