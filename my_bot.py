@@ -23,7 +23,7 @@ except ValueError: ADMIN_CHAT_ID = 0
 SUPPORT_PHONE = "+998 (90) 931-31-07"
 
 # ⚠️ СЮДА ВСТАВЬ СВОЮ ССЫЛКУ С GITHUB PAGES!
-WEBAPP_URL = "https://samekxada.github.io/flower-bot/" 
+WEBAPP_URL = "https://твой_ник.github.io/flower-bot/?v=9" 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
@@ -138,7 +138,6 @@ async def finalize_order(user_id, lang, address=None):
         except Exception as e: logger.error(f"Ошибка админу: {e}")
             
     thanks_key = "thanks" if notified else "thanks_warn"
-    # ВОТ ЗДЕСЬ БЫЛ БАГ, ТЕПЕРЬ HTML ЧИТАЕТСЯ ПРАВИЛЬНО
     await bot.send_message(
         user_id, 
         TEXTS[lang][thanks_key].format(phone, SUPPORT_PHONE), 
@@ -299,7 +298,14 @@ async def on_startup(app: web.Application):
     webhook_host = os.getenv("RENDER_EXTERNAL_URL") or os.getenv("WEBHOOK_HOST")
     if not webhook_host: return
     webhook_url = f"{webhook_host}/webhook/{TOKEN}"
+    
     try:
+        # Добавляем команды для меню клиента
+        await bot.set_my_commands([
+            types.BotCommand(command="start", description="🏠 Главное меню"),
+            types.BotCommand(command="help", description="ℹ️ Помощь")
+        ])
+        
         await bot.delete_webhook(drop_pending_updates=True)
         await bot.set_webhook(webhook_url)
     except Exception as e: logger.error(f"Ошибка старта: {e}")
